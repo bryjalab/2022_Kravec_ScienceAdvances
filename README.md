@@ -3,7 +3,7 @@
 ## Authors: 
 Marek Kravec, Ondrej Šedo, Jana Nedvědová, Miroslav Micka, Marie Šulcová, Kristína Gömöryová, David Potěšil, Ranjani Sri Ganji, Igor Červenka, Zbyněk Zdráhal, Jakub Harnoš, Konstantinos Tripsianes, Carsten Janke, Cyril Bařinka and Vítězslav Bryja*
 
-* Corresponding author: bryja@sci.muni.cz
+*Corresponding author: bryja@sci.muni.cz
 
 ## Reproducing the data analysis from this article: **Proteomic datasets**
 
@@ -39,8 +39,9 @@ Briefly, the workflow is as following:
 * Statistical testing using the limma test
 * Exporting the results as .txt file 
 
-The resulting output (for_volcano_plots_updated.txt) can be the directly used as an input for volcano_plot.script. 
+The resulting output (for_volcano_plots_updated.txt) can be the directly used as an input for volcano_plot.script and run within R (version 3.6.1). 
 
 
+## Statistical analysis of DVL3 subcellular localization
 
-
+Statistical analysis of DVL3 subcellular localization (puncta vs even phenotypes) was carried out in R (version 3.6.1) - it can be reproduced using the polyE_data.txt file as an input, and analysis_polyE_data.R script.
