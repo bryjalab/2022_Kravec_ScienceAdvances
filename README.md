@@ -7,11 +7,11 @@ Marek Kravec, Ondrej Šedo, Jana Nedvědová, Miroslav Micka, Marie Šulcová, K
 
 ## Reproducing the data analysis from this article: **Proteomic datasets**
 
-## Deposition of raw data to PRIDE
+### Deposition of raw data to PRIDE
 
 Raw proteomic data can be accessed using the PRIDE with identifiers [PXD034237](https://www.ebi.ac.uk/pride/archive?keyword=PXD034237) (LC-MS analysis of polyglutamylated DVL) and [PXD033548](https://www.ebi.ac.uk/pride/archive?keyword=PXD033548) (LC-MS analysis of protein complexes). 
 
-## Setting up the Docker container for running KNIME
+### Setting up the Docker container for running KNIME
 In case of the analysis of protein complexes, raw data were searched using the [MaxQuant](https://www.maxquant.org/) software (v. 1.6.0.16). Resulting output, the proteinGroups.txt file, was further processed using the software container environment [OmicsWorkflows](https://github.com/OmicsWorkflows) (v. 3.7.2a): the workflow is stored within this repository as 2999_publication.knwf and can be inspected using the KNIME software.
 
 To fully reproduce the analyses, run KNIME inside the Docker container using the 3.7.2a version of Docker image:
@@ -24,6 +24,23 @@ To fully reproduce the analyses, run KNIME inside the Docker container using the
 
 For more detailed instructions, please follow the tutorial [here](https://github.com/OmicsWorkflows/KNIME_docker_vnc)
 
-## KNIME workflow description
+### KNIME workflow import and description
 
-The output of MaxQuant, proteinGroups.txt table, containing protein intensities, was uploaded to KNIME.
+Download the KNIME workflow (2999_publication.knwf) and import it into KNIME (`File` -> `Import KNIME workflow`). 
+
+Run the particular nodes by right-clicking the node and `Execute` or directly pressing `F7`. 
+Briefly, the workflow is as following:
+
+* Data input (proteinGroups.txt file)
+* Contaminants filtering (cRAP, Reverse, Only identified by Site)
+* log2 transformation of protein intensities
+* LoessF normalization
+* Imputation of missing values by the global minimum
+* Statistical testing using the limma test
+* Exporting the results as .txt file 
+
+The resulting output (for_volcano_plots_updated.txt) can be the directly used as an input for volcano_plot.script. 
+
+
+
+
